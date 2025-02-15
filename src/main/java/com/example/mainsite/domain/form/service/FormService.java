@@ -38,4 +38,9 @@ public class FormService {
 
         return repository.save(form);
     }
+
+    @Transactional(readOnly = true)
+    public boolean isQueryNumberDuplicate(String queryNumber) {
+        return repository.existsByQueryNumber(queryNumber);
+    }
 }

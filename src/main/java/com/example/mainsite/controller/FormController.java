@@ -8,10 +8,7 @@ import com.example.mainsite.global.dto.ApiResponseTemplate;
 import com.example.mainsite.global.response.SuccessCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/forms")
@@ -29,5 +26,11 @@ public class FormController {
         return ResponseEntity.ok(
                 ApiResponseTemplate.success(SuccessCode.APPLICATION_SUBMIT_SUCCESS, savedForm)
         );
+    }
+
+    @GetMapping("/check")
+    public ResponseEntity<ApiResponseTemplate<Boolean>> checkQueryNumber(@RequestParam String queryNumber) {
+        boolean isDuplicate = service.isQueryNumberDuplicate(queryNumber);
+        return ResponseEntity.ok(ApiResponseTemplate.success(SuccessCode.QUERY_NUMBER_CHECK_SUCCESS, isDuplicate));
     }
 }
