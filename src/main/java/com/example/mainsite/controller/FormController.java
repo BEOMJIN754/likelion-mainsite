@@ -33,4 +33,11 @@ public class FormController {
         boolean isDuplicate = service.isQueryNumberDuplicate(queryNumber);
         return ResponseEntity.ok(ApiResponseTemplate.success(SuccessCode.QUERY_NUMBER_CHECK_SUCCESS, isDuplicate));
     }
+
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ApiResponseTemplate<Form>> getFormById(@PathVariable Long id) {
+        Form form = service.getFormById(id);
+        return ResponseEntity.ok(ApiResponseTemplate.success(SuccessCode.FORM_RETRIEVAL_SUCCESS, form));
+    }
 }

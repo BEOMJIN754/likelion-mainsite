@@ -4,6 +4,7 @@ package com.example.mainsite.domain.form.service;
 import com.example.mainsite.domain.form.dto.FormDTO;
 import com.example.mainsite.domain.form.entity.Form;
 import com.example.mainsite.domain.form.repository.FormRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -42,5 +43,11 @@ public class FormService {
     @Transactional(readOnly = true)
     public boolean isQueryNumberDuplicate(String queryNumber) {
         return repository.existsByQueryNumber(queryNumber);
+    }
+
+    @Transactional(readOnly = true)
+    public Form getFormById(Long id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Form not found with id: " + id));
     }
 }
