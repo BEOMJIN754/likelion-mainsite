@@ -30,10 +30,10 @@ public class Form {
     @Column(nullable = false)
     private String email;
 
-    @Column(nullable = false)
+    @Column(length = 2,nullable = false)
     private String militaryStatus;
 
-    @Column(nullable = false)
+    @Column(length = 5,nullable = false)
     private String rolePreference;
 
     // 8. 자기소개 & 지원동기 (600자)
@@ -62,6 +62,9 @@ public class Form {
     @Column(nullable = false)
     private boolean consent;
 
-    @Column(nullable = false, length = 4,unique = true)
+    @Column(length = 4,nullable = false, unique = true)
     private String queryNumber;
+
+    @Column
+    private Boolean passStatus;
 }

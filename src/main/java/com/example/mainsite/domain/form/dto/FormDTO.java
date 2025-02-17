@@ -3,8 +3,7 @@ package com.example.mainsite.domain.form.dto;
 import jakarta.persistence.Column;
 import lombok.*;
 
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder

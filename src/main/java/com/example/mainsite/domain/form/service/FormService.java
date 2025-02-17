@@ -2,6 +2,7 @@ package com.example.mainsite.domain.form.service;
 
 
 import com.example.mainsite.domain.form.dto.FormDTO;
+import com.example.mainsite.domain.form.dto.FormResultDTO;
 import com.example.mainsite.domain.form.entity.Form;
 import com.example.mainsite.domain.form.repository.FormRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -35,6 +36,7 @@ public class FormService {
                 .question(request.getInquiries())
                 .consent(request.isConsent())
                 .queryNumber(request.getQueryNumber())
+                .passStatus(null)
                 .build();
 
         return repository.save(form);
@@ -49,5 +51,17 @@ public class FormService {
     public Form getFormById(Long id) {
         return repository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Form not found with id: " + id));
+    }
+
+    @Transactional(readOnly = true)
+    public FormResultDTO checkPassStatus(String studentId, String queryNumber) {
+        Form form = repository.findFormResult(studentId, queryNumber);
+        if (form == null) {
+            throw new EntityNotFoundException("Form not found with studentId: " + studentId + " and queryNumber: " + queryNumber);
+        }
+        return FormResultDTO.builder()
+                .name(form.getName())
+                .passStatus(form.getPassStatus())
+                .build();
     }
 }

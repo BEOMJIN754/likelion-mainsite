@@ -2,6 +2,7 @@ package com.example.mainsite.controller;
 
 
 import com.example.mainsite.domain.form.dto.FormDTO;
+import com.example.mainsite.domain.form.dto.FormResultDTO;
 import com.example.mainsite.domain.form.entity.Form;
 import com.example.mainsite.domain.form.service.FormService;
 import com.example.mainsite.global.dto.ApiResponseTemplate;
@@ -39,5 +40,13 @@ public class FormController {
     public ResponseEntity<ApiResponseTemplate<Form>> getFormById(@PathVariable Long id) {
         Form form = service.getFormById(id);
         return ResponseEntity.ok(ApiResponseTemplate.success(SuccessCode.FORM_RETRIEVAL_SUCCESS, form));
+    }
+
+    @GetMapping("/passStatus")
+    public ResponseEntity<ApiResponseTemplate<FormResultDTO>> checkPassStatus(
+            @RequestParam String studentId,
+            @RequestParam String queryNumber) {
+        FormResultDTO result = service.checkPassStatus(studentId, queryNumber);
+        return ResponseEntity.ok(ApiResponseTemplate.success(SuccessCode.PASS_STATUS_CHECK_SUCCESS, result));
     }
 }
