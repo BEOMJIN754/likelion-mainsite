@@ -44,7 +44,7 @@ public class FormController {
     }
 
 
-    @GetMapping("/{id}")
+    @GetMapping("/id{id}")
     public ResponseEntity<ApiResponseTemplate<Form>> getFormById(@PathVariable Long id) {
         Form form = service.getFormById(id);
         return ResponseEntity.ok(ApiResponseTemplate.success(SuccessCode.FORM_RETRIEVAL_SUCCESS, form));
