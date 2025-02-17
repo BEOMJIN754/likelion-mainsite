@@ -29,10 +29,18 @@ public class FormController {
         );
     }
 
-    @GetMapping("/check")
+    @GetMapping("/checkpw")
     public ResponseEntity<ApiResponseTemplate<Boolean>> checkQueryNumber(@RequestParam String queryNumber) {
         boolean isDuplicate = service.isQueryNumberDuplicate(queryNumber);
         return ResponseEntity.ok(ApiResponseTemplate.success(SuccessCode.QUERY_NUMBER_CHECK_SUCCESS, isDuplicate));
+    }
+
+
+    @GetMapping("/checkid")
+    public ResponseEntity<ApiResponseTemplate<Boolean>> checkStudentId (@RequestParam String studentId){
+
+        boolean isDuplicate = service.isStudentIdDuplicate(studentId);
+        return ResponseEntity.ok(ApiResponseTemplate.success(SuccessCode.STUDENT_ID_CHECK_SUCCESS,isDuplicate));
     }
 
 
@@ -42,7 +50,7 @@ public class FormController {
         return ResponseEntity.ok(ApiResponseTemplate.success(SuccessCode.FORM_RETRIEVAL_SUCCESS, form));
     }
 
-    @GetMapping("/passStatus")
+    @GetMapping("/result")
     public ResponseEntity<ApiResponseTemplate<FormResultDTO>> checkPassStatus(
             @RequestParam String studentId,
             @RequestParam String queryNumber) {

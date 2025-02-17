@@ -48,6 +48,9 @@ public class FormService {
     }
 
     @Transactional(readOnly = true)
+    public boolean isStudentIdDuplicate(String studentId) {return repository.existsByStudentId(studentId);}
+
+    @Transactional(readOnly = true)
     public Form getFormById(Long id) {
         return repository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Form not found with id: " + id));
@@ -64,4 +67,6 @@ public class FormService {
                 .passStatus(form.getPassStatus())
                 .build();
     }
+
+
 }
