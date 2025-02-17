@@ -10,7 +10,9 @@ public enum SuccessCode {
     FORM_RETRIEVAL_SUCCESS(HttpStatus.OK, "Form retrieval successful."),
     PASS_STATUS_CHECK_SUCCESS(HttpStatus.OK, "Pass status check successful."),
     STUDENT_ID_CHECK_SUCCESS(HttpStatus.OK,"Student id check successful" ),
-    RESULT_UPDATE_SUCCESS(HttpStatus.OK, "Result updated successfully.");
+    RESULT_UPDATE_SUCCESS(HttpStatus.OK, "Result updated successfully."),
+    DEFAULT_MESSAGE(HttpStatus.OK, "Default API endpoint reached.");
+
 
 
     private final HttpStatus httpStatus;

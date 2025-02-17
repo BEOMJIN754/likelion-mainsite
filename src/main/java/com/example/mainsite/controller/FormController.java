@@ -21,6 +21,11 @@ public class FormController {
         this.service = service;
     }
 
+    @GetMapping
+    public ResponseEntity<ApiResponseTemplate<String>> defaultEndpoint() {
+        return ResponseEntity.ok(ApiResponseTemplate.success(SuccessCode.DEFAULT_MESSAGE, "API endpoint: please specify a sub-resource."));
+    }
+
     @PostMapping("/submit")
     public ResponseEntity<ApiResponseTemplate<Form>> submitForm(@RequestBody FormDTO request) {
         Form savedForm = service.submitForm(request);
@@ -44,7 +49,7 @@ public class FormController {
     }
 
 
-    @GetMapping("/id{id}")
+    @GetMapping("/id/{id}")
     public ResponseEntity<ApiResponseTemplate<Form>> getFormById(@PathVariable Long id) {
         Form form = service.getFormById(id);
         return ResponseEntity.ok(ApiResponseTemplate.success(SuccessCode.FORM_RETRIEVAL_SUCCESS, form));
