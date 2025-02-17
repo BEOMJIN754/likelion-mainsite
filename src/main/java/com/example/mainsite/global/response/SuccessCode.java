@@ -9,7 +9,9 @@ public enum SuccessCode {
     QUERY_NUMBER_CHECK_SUCCESS(HttpStatus.OK, "Query number check successful."),
     FORM_RETRIEVAL_SUCCESS(HttpStatus.OK, "Form retrieval successful."),
     PASS_STATUS_CHECK_SUCCESS(HttpStatus.OK, "Pass status check successful."),
-    STUDENT_ID_CHECK_SUCCESS(HttpStatus.OK,"Student id check successful" );
+    STUDENT_ID_CHECK_SUCCESS(HttpStatus.OK,"Student id check successful" ),
+    RESULT_UPDATE_SUCCESS(HttpStatus.OK, "Result updated successfully.");
+
 
     private final HttpStatus httpStatus;
     private final String message;

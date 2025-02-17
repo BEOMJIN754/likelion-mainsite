@@ -20,7 +20,7 @@ public class FormDTO {
     private String teamworkExperience;
     private String participationPlan;
     private String expectations;
-    private String inquiries;
+    private String question;
     private boolean consent;
     private String queryNumber;
 }

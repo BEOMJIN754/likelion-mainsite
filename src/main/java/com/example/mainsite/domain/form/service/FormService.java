@@ -33,7 +33,7 @@ public class FormService {
                 .teamworkExperience(request.getTeamworkExperience())
                 .participationPlan(request.getParticipationPlan())
                 .expectations(request.getExpectations())
-                .question(request.getInquiries())
+                .question(request.getQuestion())
                 .consent(request.isConsent())
                 .queryNumber(request.getQueryNumber())
                 .passStatus(null)
@@ -67,6 +67,12 @@ public class FormService {
                 .passStatus(form.getPassStatus())
                 .build();
     }
-
+    @Transactional
+    public Form updateResultByStudentId(String studentId, Boolean result) {
+        Form form = repository.findByStudentId(studentId)
+                .orElseThrow(() -> new EntityNotFoundException("Form not found with studentId: " + studentId));
+        form.setPassStatus(result);
+        return repository.save(form);
+    }
 
 }

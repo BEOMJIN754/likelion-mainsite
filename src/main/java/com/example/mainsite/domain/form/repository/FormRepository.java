@@ -5,6 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.Optional;
+
 public interface FormRepository extends JpaRepository<Form, Long> {
     boolean existsByQueryNumber(String queryNumber);
 
@@ -12,5 +14,5 @@ public interface FormRepository extends JpaRepository<Form, Long> {
     @Query("select f from Form f where f.studentId = :studentId and f.queryNumber = :queryNumber")
     Form findFormResult(@Param("studentId") String studentId, @Param("queryNumber") String queryNumber);
 
-
+    Optional<Form> findByStudentId(String studentId);
 }

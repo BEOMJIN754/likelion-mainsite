@@ -56,7 +56,7 @@ public class Form {
     @Column(length = 600, nullable = false)
     private String expectations;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String question;
 
     @Column(nullable = false)

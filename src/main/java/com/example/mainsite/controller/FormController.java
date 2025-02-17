@@ -57,4 +57,13 @@ public class FormController {
         FormResultDTO result = service.checkPassStatus(studentId, queryNumber);
         return ResponseEntity.ok(ApiResponseTemplate.success(SuccessCode.PASS_STATUS_CHECK_SUCCESS, result));
     }
+
+    @PutMapping("/update")
+    public ResponseEntity<ApiResponseTemplate<Form>> updateResultByStudentId(
+            @RequestParam String studentId,
+            @RequestParam Boolean result) {
+        Form updatedForm = service.updateResultByStudentId(studentId, result);
+        return ResponseEntity.ok(ApiResponseTemplate.success(SuccessCode.RESULT_UPDATE_SUCCESS, updatedForm));
+    }
+
 }
