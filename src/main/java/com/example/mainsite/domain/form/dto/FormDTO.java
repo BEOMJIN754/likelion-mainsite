@@ -14,6 +14,7 @@ public class FormDTO {
     private String phone;
     private String email;
     private String militaryStatus;
+    private String enrollmentStatus;
     private String rolePreference;
     private String selfIntroduction;
     private String learningApproach;

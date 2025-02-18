@@ -24,6 +24,7 @@ public class Form {
     @Column(nullable = false)
     private String department;
 
+
     @Column(nullable = false)
     private String phone;
 
@@ -32,6 +33,9 @@ public class Form {
 
     @Column(length = 2,nullable = false)
     private String militaryStatus;
+
+    @Column(length = 4, nullable = false)
+    private String enrollmentStatus;
 
     @Column(length = 5,nullable = false)
     private String rolePreference;

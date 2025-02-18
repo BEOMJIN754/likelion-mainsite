@@ -27,6 +27,7 @@ public class FormService {
                 .phone(request.getPhone())
                 .email(request.getEmail())
                 .militaryStatus(request.getMilitaryStatus())
+                .enrollmentStatus(request.getEnrollmentStatus())
                 .rolePreference(request.getRolePreference())
                 .selfIntroduction(request.getSelfIntroduction())
                 .learningApproach(request.getLearningApproach())
