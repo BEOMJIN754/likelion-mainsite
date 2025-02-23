@@ -31,13 +31,13 @@ public class Form {
     @Column(nullable = false)
     private String email;
 
-    @Column(length = 2,nullable = false)
+    @Column(length = 10,nullable = false)
     private String militaryStatus;
 
-    @Column(length = 4, nullable = false)
+    @Column(length = 10, nullable = false)
     private String enrollmentStatus;
 
-    @Column(length = 5,nullable = false)
+    @Column(length = 10,nullable = false)
     private String rolePreference;
 
     // 8. 자기소개 & 지원동기 (600자)
